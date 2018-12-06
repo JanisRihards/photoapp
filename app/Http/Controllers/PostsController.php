@@ -52,18 +52,19 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999' //Bildes prasības - var neūt, tad tiek aizstāta ar noimg.jpg un nedrikst pasniegt 1999kb izmeru
         ]);
             //File ulpoad
             if($request->hasFile('cover_image')){
+                //Dabūt bildi un nosaukumu
                 $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
-
+                 // Dabūt faila nosaukumu
                 $filename = pathinfo($fileNameWithExt,PATHINFO_FILENAME);
 
                 $extension = $request->file('cover_image')->getClientOriginalExtension();
-
+                // Ja kads augsuplade failu ar vienadu nosaukumu, tad faila nosaukumam pievieno laiku
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
-
+                // Faila augšuplāde
                 $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
             } else{
                 $fileNameToStore = 'noimg.jpg';
