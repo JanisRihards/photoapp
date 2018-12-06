@@ -17,6 +17,6 @@ class Post extends Model implements AuditableContract
     public $timestamp = true; // Laiks
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User'); // Norada kurs user ir kuru post uztasijis
     }
 }
