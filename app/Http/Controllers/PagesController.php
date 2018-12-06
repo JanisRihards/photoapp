@@ -13,9 +13,9 @@ class PagesController extends Controller
         return view('pages/about');
     }
     public function blog(){
-        $data = array (
-            'services' => ['Web Design' , 'Programming' , 'Databae']
-        );
+        // $data = array (
+        //     'services' => ['Web Design' , 'Programming' , 'Databae']
+        // );
         return view('pages/blog')->with($data);
     }
 }
