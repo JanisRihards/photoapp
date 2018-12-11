@@ -54,16 +54,17 @@ class PostsController extends Controller
             'body' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ]);
-            //File ulpoad
+            //Failu augsuplade
             if($request->hasFile('cover_image')){
+                    //Faila nosaukumu iegusana ar formatu
                 $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
-
+                    //Faila iegusana - tikai nosaukums
                 $filename = pathinfo($fileNameWithExt,PATHINFO_FILENAME);
-
+                    //Faila formata iegusana
                 $extension = $request->file('cover_image')->getClientOriginalExtension();
-
+                    //Faila nosaukums sistema
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
-
+                    //Faila augsuplade
                 $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
             } else{
                 $fileNameToStore = 'noimg.jpg';
