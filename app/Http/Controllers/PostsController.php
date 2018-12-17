@@ -108,7 +108,7 @@ class PostsController extends Controller
         if(auth()->user()->id != $post->user_id){
             return redirect('/posts')->with('error','Pieejas kluda');
         }
-
+        
         return view('posts\edit')->with('post',$post);
     }
 

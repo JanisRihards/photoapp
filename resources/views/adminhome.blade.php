@@ -43,9 +43,9 @@
                     @endif
                 </div>
             </div>
-            <!-- @if(Auth::user()->admin == 1)
+            <br>
             <div class="card">
-                <h4 class="card-header">@lang('home.posts')</h4>
+                <h4 class="card-header">@lang('home.user_post')</h4>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -53,17 +53,22 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h3>@lang('home.your_post')</h3>
+                        
+                    <!-- <h3>@lang('home.your_post')</h3> -->
                     @if(count($posts) > 0)
                      <table class = 'table table-striped'>
                             <tr>
                                 <td><h5>@lang('home.headline')</h5></td>
+                                <td>@lang('home.user') ID</td>
+                                <td>@lang('auth.name')</td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             @foreach($posts as $post)
                             <tr>
                                 <td>{{$post->title}}</td>
+                                <td>{{Auth::user()->id}}</td>
+                                <td>{{Auth::user()->name}}</td>
                                 <td><a class = 'btn btn-primary' href="/posts/{{$post->id}}/edit">@lang('home.edit')</a></td>
                                 <td>
                                     {!! Form::open(['action' => ['PostsController@destroy', $post->id],
@@ -76,11 +81,10 @@
                             @endforeach
                         </table>
                         @else
-                        <p>@lang('home.post_info')</p>
+                        <p>@lang('home.user_info')</p>
                     @endif
                 </div>
             </div>
-            @endif -->
         </div>
     </div>
 </div>

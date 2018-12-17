@@ -15,7 +15,9 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'PagesController@main');
+// Route::group(['middleware' => ['web','auth']], function(){
+    Route::get('/', 'PagesController@main');
+
 
 Route::get('/about', 'PagesController@about');
 
@@ -26,7 +28,27 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('locale/{locale}',function ($locale){
-    Session::put('locale',$locale);
-    return redirect()->back();
+// Route::group(['middleware' =>['IsAdmin','auth']], function(){
+//     Route::get('/home', 'HomeController@index');
+// });
+// Route::get('/home', 'HomeController@index')->middleware('IsAdmin');
+// Route::get('/home', 'HomeController@index', function(){
+//     if(Auth::user()->admin == 0){
+//         return view('home');
+//     } else{
+//     $users['users'] = \App\User::all();
+//     return view('adminhome',$users);
+//     }
+// });
+    Route::get('locale/{locale}',function ($locale){
+        Session::put('locale',$locale);
+        return redirect()->back();
+    
 });
+
+
+
+// Route::get('locale/{locale}',function ($locale){
+//     Session::put('locale',$locale);
+//     return redirect()->back();
+// });
