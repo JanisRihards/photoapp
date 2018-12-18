@@ -22,5 +22,7 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'pw_reset' => 'Password reset link has been sent to your e-mail',
-    'reset' => 'Reset Password'
+    'reset' => 'Reset Password',
+    'name_error' => 'The name has already been taken',
+    'email_error' => 'E-mail address is already used',
 ];

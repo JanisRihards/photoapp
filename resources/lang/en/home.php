@@ -33,6 +33,7 @@ return [
     'user_post' => 'User Posts',
     "user_info" => "User's have no posts",
     'user' => 'User',
+    'admin' => 'Admin panel',
     'post_info' => 'You have no posts!',
     'edit' => 'Edit',
     'delete' => 'Delete',

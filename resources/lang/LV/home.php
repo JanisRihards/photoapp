@@ -34,6 +34,7 @@ return [
     "user_info" => "Lietotājiem nav ierakstu",
     'post_info' => 'Jums nav ierakstu!',
     'user' => 'Lietotāja/-s',
+    'admin' => 'Admin panelis',
     'edit' => 'Labot',
     'delete' => 'Dzēst',
     'failed' => 'These credentials do not match our records.',

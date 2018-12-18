@@ -45,7 +45,8 @@
             </div> -->
             <br>
             <div class="card">
-                <h4 class="card-header">@lang('home.user_post')</h4>
+                <h1 class="card-header">@lang('home.admin')</h1>
+                <h4 class="card-header">@lang('home.posts')</h4>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -53,8 +54,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a class = 'btn btn-primary' href="/posts/create">@lang('home.create_post')</a>
-                    <h6><br></h6>
+                   
                     @if(count($posts) > 0)
                      <table class = 'table table-striped'>
                             <tr>
@@ -80,10 +80,12 @@
                             </tr>
                             @endforeach
                         </table>
+                        <a class = ' btn btn-primary' href="/posts/create">@lang('home.create_post')</a>
                         @else
                         <p>@lang('home.user_info')</p>
                     @endif
                 </div>
+                    
             </div>
         </div>
     </div>

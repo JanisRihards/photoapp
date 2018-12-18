@@ -22,6 +22,8 @@ return [
     'failed' => 'Šie akreditācijas dati neatbilst mūsu reģistriem.',
     'throttle' => 'Pārāk daudz pieslēgšanās mēģinājumu. Lūzu mēģiniet vēlreiz :seconds seconds.',
     'pw_reset' => 'Paroles atjaunošanas saite ir nosūtīta uz jūsu E-pasta adresi',
-    'reset' => 'Atjaunot Paroli'
+    'reset' => 'Atjaunot Paroli',
+    'name_error' => 'Lietotājvārds jau eksistē',
+    'email_error' => 'E-Pasta adrese jau ir aizņemta',
 
 ];

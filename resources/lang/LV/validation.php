@@ -109,7 +109,9 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
+    'unique'               => ':Attribute jau ir izmantots/-a',
+    'uniqueu'               => ':Attribute jau ir izmantots',
+    'uniquee'               => ':Attribute jau ir izmantota',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 
