@@ -75,11 +75,12 @@ class PostsController extends Controller
             $post->title = $request->input('title');
             $post->body = $request->input('body');
             $post->user_id = auth()->user()->id;
+            $post->username = auth()->user()->name;
             $post->cover_image = $fileNameToStore;
             $post->save();
 
             return redirect('/posts')->with('success','Post Created');
-    }
+    } 
 
     /**
      * Display the specified resource.
@@ -105,7 +106,7 @@ class PostsController extends Controller
 
         //Check for correct id
 
-        if(auth()->user()->id != $post->user_id){
+        if(auth()->user()->id != $post->user_id && auth()->user()->admin == 0){
             return redirect('/posts')->with('error','Pieejas kluda');
         }
         
@@ -148,7 +149,7 @@ class PostsController extends Controller
             }
             $post->save();
 
-            return redirect('/posts')->with('success','Ieraksts labots');
+            return redirect('/home')->with('success','Ieraksts labots');
     }
 
     /**
@@ -163,7 +164,7 @@ class PostsController extends Controller
 
         //Check for correct id
 
-        if(auth()->user()->id != $post->user_id){
+        if(auth()->user()->id != $post->user_id && auth()->user()->admin == 0){
             return redirect('/posts')->with('error','Pieejas kluda');
         }
         if($post->cover_image != 'noimg.jpg'){
@@ -171,7 +172,7 @@ class PostsController extends Controller
         }
 
         $post->delete();
-        return redirect('/posts')->with('success','Ieraksts Dzests');
+        return redirect('/home')->with('success','Ieraksts Dzests');
 
     }
 }

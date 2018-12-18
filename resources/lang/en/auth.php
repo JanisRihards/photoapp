@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'name' => 'Name',
+    'name' => 'Username',
     'e-mail' => 'E-Mail Address',
     'password' => 'Password',
     'conf_password' => 'Confirm password',

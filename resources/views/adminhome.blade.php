@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
         <br>
-            <div class="card">
+            <!-- <div class="card">
                 <h4 class="card-header">@lang('home.posts')</h4>
 
                 <div class="card-body">
@@ -42,7 +42,7 @@
                         <p>@lang('home.post_info')</p>
                     @endif
                 </div>
-            </div>
+            </div> -->
             <br>
             <div class="card">
                 <h4 class="card-header">@lang('home.user_post')</h4>
@@ -53,8 +53,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        
-                    <!-- <h3>@lang('home.your_post')</h3> -->
+                    <a class = 'btn btn-primary' href="/posts/create">@lang('home.create_post')</a>
+                    <h6><br></h6>
                     @if(count($posts) > 0)
                      <table class = 'table table-striped'>
                             <tr>
@@ -67,8 +67,8 @@
                             @foreach($posts as $post)
                             <tr>
                                 <td>{{$post->title}}</td>
-                                <td>{{Auth::user()->id}}</td>
-                                <td>{{Auth::user()->name}}</td>
+                                <td>{{$post->user_id}}</td>
+                                <td>{{$post->username }}</td>
                                 <td><a class = 'btn btn-primary' href="/posts/{{$post->id}}/edit">@lang('home.edit')</a></td>
                                 <td>
                                     {!! Form::open(['action' => ['PostsController@destroy', $post->id],

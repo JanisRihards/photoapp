@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'name' => 'Vārds',
+    'name' => 'Lietotājvārds',
     'e-mail' => 'E-pasta adrese',
     'password' => 'Parole',
     'conf_password' => 'Apstiprināt paroli',

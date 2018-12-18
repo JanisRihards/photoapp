@@ -20,6 +20,7 @@ class IsAdmin
         // }else {
         //     return redirect()->guest('ahome');
         // }
+        
         return $next($request);
     }
 }

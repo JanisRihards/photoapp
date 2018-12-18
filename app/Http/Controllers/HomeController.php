@@ -8,6 +8,7 @@ use App\Post;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Storage;
 class HomeController extends Controller
 {
     /**
@@ -32,13 +33,12 @@ class HomeController extends Controller
         // return view('home')->with('posts', $user->posts); //Lietotaja home screen redzami lietotaja posti
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        // $user_posts = User::all($user_id);
 
         if(auth()->check() && auth()->user()->admin == 0){
         return view('home')->with('posts', $user->posts);} //Lietotaja home screen redzami lietotaja posti
         if(auth()->check() && auth()->user()->admin == 1){
-        
-        return view('adminhome')->with('posts', $user->posts);}
+            $posts = Post::get();
+        return view('adminhome')->with('posts', $posts, $user->posts);}
     }
     // public function admin(){
             // if(Auth::user()->admin == 0){
