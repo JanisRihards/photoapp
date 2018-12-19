@@ -54,17 +54,17 @@ class PostsController extends Controller
             'body' => 'required',
             'cover_image' => 'image|nullable|max:1999' //Bildes prasības - var neūt, tad tiek aizstāta ar noimg.jpg un nedrikst pasniegt 1999kb izmeru
         ]);
-            //File ulpoad
+            //Failu augsuplade
             if($request->hasFile('cover_image')){
-                //Dabūt bildi un nosaukumu
+                    //Faila nosaukumu iegusana ar formatu
                 $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
-                 // Dabūt faila nosaukumu
+                    //Faila iegusana - tikai nosaukums
                 $filename = pathinfo($fileNameWithExt,PATHINFO_FILENAME);
-
+                    //Faila formata iegusana
                 $extension = $request->file('cover_image')->getClientOriginalExtension();
-                // Ja kads augsuplade failu ar vienadu nosaukumu, tad faila nosaukumam pievieno laiku
+                    //Faila nosaukums sistema
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
-                // Faila augšuplāde
+                    //Faila augsuplade 
                 $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
             } else{
                 $fileNameToStore = 'noimg.jpg';
@@ -75,11 +75,12 @@ class PostsController extends Controller
             $post->title = $request->input('title');
             $post->body = $request->input('body');
             $post->user_id = auth()->user()->id;
+            $post->username = auth()->user()->name;
             $post->cover_image = $fileNameToStore;
             $post->save();
 
             return redirect('/posts')->with('success','Post Created');
-    }
+    } 
 
     /**
      * Display the specified resource.
@@ -105,10 +106,10 @@ class PostsController extends Controller
 
         //Check for correct id
 
-        if(auth()->user()->id != $post->user_id){
+        if(auth()->user()->id != $post->user_id && auth()->user()->admin == 0){
             return redirect('/posts')->with('error','Pieejas kluda');
         }
-
+        
         return view('posts\edit')->with('post',$post);
     }
 
@@ -148,7 +149,7 @@ class PostsController extends Controller
             }
             $post->save();
 
-            return redirect('/posts')->with('success','Ieraksts labots');
+            return redirect('/home')->with('success','Ieraksts labots');
     }
 
     /**
@@ -163,7 +164,7 @@ class PostsController extends Controller
 
         //Check for correct id
 
-        if(auth()->user()->id != $post->user_id){
+        if(auth()->user()->id != $post->user_id && auth()->user()->admin == 0){
             return redirect('/posts')->with('error','Pieejas kluda');
         }
         if($post->cover_image != 'noimg.jpg'){
@@ -171,7 +172,7 @@ class PostsController extends Controller
         }
 
         $post->delete();
-        return redirect('/posts')->with('success','Ieraksts Dzests');
+        return redirect('/home')->with('success','Ieraksts Dzests');
 
     }
 }

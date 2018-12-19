@@ -20,7 +20,7 @@
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>@lang('auth.name_error')</strong>
                                     </span>
                                 @endif
                             </div>
@@ -34,7 +34,7 @@
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>@lang('auth.email_error')</strong>
                                     </span>
                                 @endif
                             </div>

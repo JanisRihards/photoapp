@@ -13,7 +13,7 @@
         <small>@lang('blog.a'): {{$post->user->name}} {{$post->created_at}}</small>
         <hr>
         @if(!Auth::guest())
-            @if(Auth::user()->id == $post->user_id)
+            @if(Auth::user()->id == $post->user_id || Auth::user()->admin == 1)
                 <a class = 'btn btn-primary' href="/posts/{{$post->id}}/edit">@lang('home.edit')</a>
 
 
